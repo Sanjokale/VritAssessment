@@ -44,7 +44,11 @@ function Card({ title, subtitle, description, bg, img, idx }) {
   return (
     <div className={`${bg} rounded-2xl px-4 py-10 relative`}>
       <div
-        className={`absolute -bottom-18 ${imagePositionClass} w-[250px] h-[330px]`}
+        className={`absolute ${
+    img === "/img3.png" ? "-bottom-30" : "-bottom-18"
+  } ${imagePositionClass} ${
+    img === "/img3.png" ? "w-[300px] h-[380px]" : "w-[250px] h-[330px]"
+  }`}
       >
         <Image
           src={img}
@@ -60,7 +64,7 @@ function Card({ title, subtitle, description, bg, img, idx }) {
         {title}
       </h2>
       <h3
-        className={`font-outfit text-[#FAFAFA] text-2xl font-medium  mb-7  ${textAllignClass} ${textContainerClass}`}
+        className={`text-[#FAFAFA] text-2xl font-medium  mb-7  ${textAllignClass} ${textContainerClass}`}
       >
         {subtitle}
       </h3>
