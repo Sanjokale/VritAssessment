@@ -8,8 +8,8 @@ import Image from "next/image";
 export default function Home() {
   return (
    <div className="py-6">
-    <SkillShikshyaJourney /> 
-    {/* <TrendingCourses /> */}
+    {/* <SkillShikshyaJourney />  */}
+    <TrendingCourses />
     {/* <TestimonialShowcase /> */}
     
    </div>
