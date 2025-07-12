@@ -58,7 +58,7 @@ function Card({
   const imagePositionClass = isoddCard ? "-right-10" : "-left-10";
 
   // Animate only for first two cards (optional)
-  const shouldAnimate = idx === 1 || idx === 2;
+  const shouldAnimate = idx === 0 || idx === 1;
 
   const imageContent = (
     <Image
@@ -121,7 +121,7 @@ function Card({
 
 export default function SkillShikshyaJourney() {
   //   const [isFirstCardHovered, setIsFirstCardHovered] = useState(false);
-  const [hovercardIndex, setHoveredCardIndex] = useState(null);
+  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
 
   return (
     <div className="max-w-7xl mx-auto py-12 ">
@@ -141,36 +141,48 @@ export default function SkillShikshyaJourney() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
         {cardData.map((card, idx) => {
           if (idx === 0 || idx === 1) {
-            const isHovered = hovercardIndex === idx;
+            const isHovered = hoveredCardIndex === idx;
             return (
-              <AnimatePresence mode="wait" key={`first-card-wrapper-${idx}`}>
-                {isHovered ? (
-                  <motion.div
-                    key={`arc-card-${idx}`}
-                    initial={{ opacity: 0, x: 0 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 0 }}
-                    transition={{ duration: 0, ease: "easeInOut" }}
-                    onMouseLeave={() => setHoveredCardIndex(false)}
-                    className="flex items-center justify-center"
-                  >
-                    {idx === 0 ? <ArcCard /> : <ArcCard2 />}
-                  </motion.div>
-                ) : (
+
+              <div>
+
+                <AnimatePresence
+                  mode="popLayout"
+                  key={`first-card-wrapper-${idx}`}
+                >
+                  {isHovered && (
+                    <motion.div
+                      key={`arc-card-${idx}`}
+                      initial={{ opacity: 0, x: 0 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -100 }} // fade out to left
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      onMouseLeave={() => setHoveredCardIndex(null)}
+                      className="flex items-center justify-center"
+                    >
+                      {idx === 0 ? <ArcCard /> : <ArcCard2 />}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                    <AnimatePresence mode="popLayout">
+                {hoveredCardIndex !== idx && (
                   <motion.div
                     key={`card-${idx}`}
                     initial={{ opacity: 0, x: -500 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -500 }}
+                    exit={{ opacity: 0, x: -100 }} // fade out to left
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     onMouseEnter={() => setHoveredCardIndex(idx)}
-                    onMouseLeave={() => setHoveredCardIndex(null)}
                     className="flex items-center justify-center"
                   >
                     <Card idx={idx} {...card} />
                   </motion.div>
                 )}
               </AnimatePresence>
+                  
+              </div>
+              
             );
           }
 

@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function ArcCard() {
   return (
 
-      <div className="relative flex w-[592px] h-[341px] bg-[#fa5a5a] rounded-[40px] px-8 py-6 border-none">
+      <div className="relative flex w-[592px] h-[341px] bg-[#fa5a5a] rounded-2xl px-8 py-6 border-none">
         <div className="w-1/2">
           <div className="absolute left-5 bottom-0 z-10">
             <Image

@@ -3,7 +3,7 @@ import Image from "next/image";
 // ArcCard.jsx
 export default function ArcCard2() {
   return (
-    <div className="relative flex h-[341px] w-[592] bg-[#5492A0] rounded-[40px] px-8 py-6 border-none">
+    <div className="relative flex h-[341px] w-[592] bg-[#5492A0] rounded-2xl px-8 py-6 border-none">
       <div className="w-2/5 ">
         <p className=" font-bold text-[20px] text-white mt-6 ml-6 ">
           Focused faces—learning mode: ON!
