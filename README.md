@@ -25,6 +25,3 @@ To install dependencies and start the development server:
 - react-dom@^19.0.0
 - framer-motion@^12.23.3
 
-## License
-
-This project is licensed under the MIT License.
