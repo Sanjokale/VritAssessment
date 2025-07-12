@@ -155,7 +155,7 @@ export default function SkillShikshyaJourney() {
                       key={`arc-card-${idx}`}
                       initial={{ opacity: 0, x: 0 }}
                       animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -100 }} // fade out to left
+                      exit={{ opacity: 0, x: -500 }} // fade out to left
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                       onMouseLeave={() => setHoveredCardIndex(null)}
                       className="flex items-center justify-center"
@@ -169,10 +169,10 @@ export default function SkillShikshyaJourney() {
                 {hoveredCardIndex !== idx && (
                   <motion.div
                     key={`card-${idx}`}
-                    initial={{ opacity: 0, x: -500 }}
+                    initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }} // fade out to left
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    exit={{ opacity: 0, x: -500 }} // fade out to left
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
                     onMouseEnter={() => setHoveredCardIndex(idx)}
                     className="flex items-center justify-center"
                   >
