@@ -48,10 +48,11 @@ function Card({
   bg,
   img,
   idx,
+
   onHover,
   onLeave,
 }) {
-  const isoddCard = idx % 2 === 0;
+  const isoddCard = (idx + 1) % 2 === 0;
   const textAllignClass = isoddCard ? "text-left" : "text-right";
   const textContainerClass = isoddCard ? "mr-auto" : "ml-auto";
   const imagePositionClass = isoddCard ? "-right-10" : "-left-10";
@@ -73,7 +74,6 @@ function Card({
       className={`${bg} rounded-2xl px-4 py-10 relative w-[592px] h-[341px]`}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
-      
     >
       {shouldAnimate ? (
         <motion.div
@@ -120,12 +120,11 @@ function Card({
 }
 
 export default function SkillShikshyaJourney() {
-//   const [isFirstCardHovered, setIsFirstCardHovered] = useState(false);
-const [hovercardIndex, setHoveredCardIndex] = useState(null);
-
+  //   const [isFirstCardHovered, setIsFirstCardHovered] = useState(false);
+  const [hovercardIndex, setHoveredCardIndex] = useState(null);
 
   return (
-    <div className="max-w-7xl mx-auto px-12 ">
+    <div className="max-w-7xl mx-auto py-12 ">
       <h2 className="font-sans font-medium text-[24px] leading-none tracking-normal text-[#414141] mb-6">
         Your SkillShikshya Journey
       </h2>
@@ -144,35 +143,31 @@ const [hovercardIndex, setHoveredCardIndex] = useState(null);
           if (idx === 0 || idx === 1) {
             const isHovered = hovercardIndex === idx;
             return (
-              <AnimatePresence mode="wait" key="first-card-wrapper">
+              <AnimatePresence mode="wait" key={`first-card-wrapper-${idx}`}>
                 {isHovered ? (
                   <motion.div
-                    key="arc-card"
+                    key={`arc-card-${idx}`}
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 0 }}
                     transition={{ duration: 0, ease: "easeInOut" }}
                     onMouseLeave={() => setHoveredCardIndex(false)}
+                    className="flex items-center justify-center"
                   >
-                    {
-                        idx === 0 ? (
-                            <ArcCard />
-                        ) : (
-                            <ArcCard2 />
-                        )
-                    }
+                    {idx === 0 ? <ArcCard /> : <ArcCard2 />}
                   </motion.div>
                 ) : (
                   <motion.div
-                    key="card-0"
+                    key={`card-${idx}`}
                     initial={{ opacity: 0, x: -500 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -500 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                     onMouseEnter={() => setHoveredCardIndex(idx)}
                     onMouseLeave={() => setHoveredCardIndex(null)}
+                    className="flex items-center justify-center"
                   >
-                    <Card idx={1} {...card} />
+                    <Card idx={idx} {...card} />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -180,7 +175,14 @@ const [hovercardIndex, setHoveredCardIndex] = useState(null);
           }
 
           // Other cards render normally without hover handlers
-          return <Card key={`card-${idx}`} idx={idx + 1} {...card} />;
+          return (
+            <div
+              key={`card-wrapper-${idx}`}
+              className="flex items-center justify-center"
+            >
+              <Card idx={idx} {...card} />
+            </div>
+          );
         })}
       </div>
     </div>

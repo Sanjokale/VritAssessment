@@ -6,10 +6,10 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="py-6">
-      {/* <SkillShikshyaJourney />  */}
-      {/* <TrendingCourses /> */}
-      {/* <TestimonialShowcase /> */}
+    <div className="py-6 px-8">
+      <SkillShikshyaJourney />
+      <TrendingCourses />
+      <TestimonialShowcase />
       <RandomBox />
     </div>
   );

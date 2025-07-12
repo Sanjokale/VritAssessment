@@ -3,9 +3,8 @@
 import React, { useState, useEffect } from "react";
 
 export default function RandomBox() {
-    
-  const GRID_SIZE_Y = 25; 
-  const GRID_SIZE_X = 10
+  const GRID_SIZE_Y = 25;
+  const GRID_SIZE_X = 10;
   const TOTAL_BOXES = GRID_SIZE_Y * GRID_SIZE_X;
   const ACTIVE_BOXES_COUNT = 8; // Number of colored boxes at any time
 
@@ -14,7 +13,7 @@ export default function RandomBox() {
   const generateRandomActiveBoxes = () => {
     const indexes = [];
     while (indexes.length < ACTIVE_BOXES_COUNT) {
-      const randomIndex = Math.floor(Math.random() * TOTAL_BOXES );
+      const randomIndex = Math.floor(Math.random() * TOTAL_BOXES);
       if (!indexes.includes(randomIndex)) {
         indexes.push(randomIndex);
       }
@@ -34,7 +33,8 @@ export default function RandomBox() {
   }, []);
 
   return (
-    <div className="container mx-auto h-screen flex items-center justify-center bg-gray-50 p-4">
+    <div className="max-w-7xl mx-auto h-screen flex flex-col items-center justify-center bg-gray-50  py-12">
+      <p className="bold text-2xl">Task 4</p>
       <div
         className="grid bg-white rounded-lg shadow-lg border border-gray-300 w-full h-full"
         style={{
@@ -47,7 +47,11 @@ export default function RandomBox() {
             key={index}
             className={`
               border-r border-b border-gray-300 transition-all duration-500 ease-in-out 
-              ${activeBoxes.includes(index) ? "bg-purple-500" : "bg-gray-50 hover:bg-gray-100"}
+              ${
+                activeBoxes.includes(index)
+                  ? "bg-purple-500"
+                  : "bg-gray-50 hover:bg-gray-100"
+              }
             `}
           />
         ))}

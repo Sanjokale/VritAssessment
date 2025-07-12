@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         outfit: ["Outfit", "sans-serif"],
-        nohemi: ["Nohemi", "sans-serif"],
       },
     },
   },

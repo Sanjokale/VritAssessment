@@ -21,7 +21,8 @@ export default function TrendingCourses() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto py-12">
+      
       {/* Header */}
       <div className="mb-12">
         <p className="text-[#414141] font-normal text-2xl mb-5">

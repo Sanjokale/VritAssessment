@@ -44,25 +44,24 @@ export default function TestimonialShowcase() {
     },
   };
 
-
   function getRandomBounce() {
-  const amplitude = Math.random() * 8 + 3; // 3-11 px vertical bounce
-  const duration = Math.random() * 1.5 + 1.5; // 1.5-3 sec duration
-  return {
-    y: [0, -amplitude, 0],
-    transition: {
-      y: {
-        repeat: Infinity,
-        repeatType: "mirror",
-        duration,
-        ease: "easeInOut",
+    const amplitude = Math.random() * 8 + 3; // 3-11 px vertical bounce
+    const duration = Math.random() * 1.5 + 1.5; // 1.5-3 sec duration
+    return {
+      y: [0, -amplitude, 0],
+      transition: {
+        y: {
+          repeat: Infinity,
+          repeatType: "mirror",
+          duration,
+          ease: "easeInOut",
+        },
       },
-    },
-  };
-}
+    };
+  }
   return (
     <div
-      className="max-w-7xl h-screen mx-auto flex items-center justify-center px-6 py-12"
+      className="max-w-7xl mx-auto h-screen flex items-center justify-center py-12"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -79,9 +78,19 @@ export default function TestimonialShowcase() {
             </span>
           </div>
           <button className="text-base font-semibold text-gray-700 flex items-center justify-center mx-auto gap-2">
-            <div>View all Testimonials</div>
-            <span>
-              {/* SVG icon */}
+            <motion.div
+              animate={{ x: [0, -5, 0] }} // slide left and back
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              style={{ display: "inline-block" }}
+              className="font-outfit"
+            >
+              View all Testimonials
+            </motion.div>
+            <motion.span
+              animate={{ x: [0, 5, 0] }} // slide right and back
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+              style={{ display: "inline-block" }}
+            >
               <svg
                 width="20"
                 height="20"
@@ -96,7 +105,7 @@ export default function TestimonialShowcase() {
                   fill="#2B2B2B"
                 />
               </svg>
-            </span>
+            </motion.span>
           </button>
         </div>
 
