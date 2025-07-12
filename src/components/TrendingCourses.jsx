@@ -219,3 +219,9 @@ function VerticalCard({
     </motion.div>
   );
 }
+
+
+
+
+
+
